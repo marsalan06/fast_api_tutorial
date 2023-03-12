@@ -7,3 +7,32 @@ python3 -m pip install uvicorn # the standard server
 --> create main.py, import FastAPI from fastapi and create an object,
 --> runserver using uvicorn main:app --reload
 -->the decorator works like flask , @app.get('/'), @<App_variable>.<method>(<route>)
+
+--> dynamic routes,
+
+    @app.get('/blog/{id}') #dynamic url
+    def index(id: int): #fix the type by adding id: int 
+        return {'data':'blog list '+ str(id)}
+
+
+--> routes with same first path should have type and dynamic constraint path bellow the normal ones
+@app.get('/blog/complete')
+def complete():
+    return {'data':'blog route without type issue'}
+
+@app.get('/blog/{id}') #dynamic url
+def index(id: int): #fix the type by adding id: int 
+    return {'data':'blog list '+ str(id)}
+
+
+
+--> pydantic library deals with all datatypes
+
+--> swagger UI shows the docs , url will be /docs for swagger and /redoc for redoc
+
+--> if we dont pass the parameters in route we can still use them by defining them in the function 
+
+def query_method(number,published: bool): #we just added it to the route
+    #http://127.0.0.1:8000/query?number=3&published=true
+
+published: Optional[bool]=True): #so now number is required but published is optional and has a default value
