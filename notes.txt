@@ -1,0 +1,9 @@
+python has to be greater than 3.6 , check it,
+
+create venv and install fast api,
+python3 -m pip install fastapi
+python3 -m pip install uvicorn # the standard server
+
+--> create main.py, import FastAPI from fastapi and create an object,
+--> runserver using uvicorn main:app --reload
+-->the decorator works like flask , @app.get('/'), @<App_variable>.<method>(<route>)
